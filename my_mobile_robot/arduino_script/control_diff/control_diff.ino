@@ -14,7 +14,7 @@ ros::NodeHandle nh;
 // Other encoder output to Arduino to keep track of wheel direction
 // Tracks the direction of rotation.
 #define ENC_IN_LEFT_B 4
-#define ENC_IN_RIGHT_B 11
+#define ENC_IN_RIGHT_B 8
  
 // True = Forward; False = Reverse
 boolean Direction_left = true;
@@ -40,30 +40,30 @@ long currentMillis = 0;
 ////////////////// Motor Controller Variables and Constants ///////////////////
  
 // Motor A connections
-const int enA = 9;
-const int in1 = 5;
-const int in2 = 6;
+const int enA = 11;
+const int in1 = 7;
+const int in2 = 5;
   
 // Motor B connections
-const int enB = 10; 
-const int in3 = 7;
-const int in4 = 8;
+const int enB = 6; 
+const int in3 = 9;
+const int in4 = 10;
  
 // How much the PWM value can change each cycle
 const int PWM_INCREMENT = 1;
  
 // Number of ticks per wheel revolution. We won't use this in this code.
-const int TICKS_PER_REVOLUTION = 620;
+const int TICKS_PER_REVOLUTION = 960;
  
 // Wheel radius in meters
-const double WHEEL_RADIUS = 0.033;
+const double WHEEL_RADIUS = 0.034;
  
 // Distance from center of the left tire to the center of the right tire in m
-const double WHEEL_BASE = 0.17;
+const double WHEEL_BASE = 0.201;
  
 // Number of ticks a wheel makes moving a linear distance of 1 meter
 // This value was measured manually.
-const double TICKS_PER_METER = 3100; // Originally 2880
+const double TICKS_PER_METER = 4492; // Originally 2880
  
 // Proportional constant, which was measured by measuring the 
 // PWM-Linear Velocity relationship for the robot.
@@ -347,8 +347,8 @@ void set_pwm_values() {
   pwmRightOut = (pwmRightOut < 0) ? 0 : pwmRightOut;
  
   // Set the PWM value on the pins
-  analogWrite(enA, pwmLeftOut); 
-  analogWrite(enB, pwmRightOut); 
+  //analogWrite(enA, pwmLeftOut); 
+  //analogWrite(enB, pwmRightOut); 
 }
  
 // Set up ROS subscriber to the velocity command
@@ -367,8 +367,8 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(ENC_IN_RIGHT_A), right_wheel_tick, RISING);
    
   // Motor control pins are outputs
-  pinMode(enA, OUTPUT);
-  pinMode(enB, OUTPUT);
+  //pinMode(enA, OUTPUT);
+  //pinMode(enB, OUTPUT);
   pinMode(in1, OUTPUT);
   pinMode(in2, OUTPUT);
   pinMode(in3, OUTPUT);
@@ -381,8 +381,8 @@ void setup() {
   digitalWrite(in4, LOW);
   
   // Set the motor speed
-  analogWrite(enA, 0); 
-  analogWrite(enB, 0);
+  //analogWrite(enA, 0); 
+  //analogWrite(enB, 0);
  
   // ROS Setup
   nh.getHardware()->setBaud(115200);
@@ -422,4 +422,5 @@ void loop() {
   }
  
   set_pwm_values();
+  //delay(1);
 }
