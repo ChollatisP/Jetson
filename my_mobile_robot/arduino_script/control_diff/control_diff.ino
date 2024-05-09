@@ -14,7 +14,7 @@ ros::NodeHandle nh;
 // Other encoder output to Arduino to keep track of wheel direction
 // Tracks the direction of rotation.
 #define ENC_IN_LEFT_B 4
-#define ENC_IN_RIGHT_B 11
+#define ENC_IN_RIGHT_B 8
  
 // True = Forward; False = Reverse
 boolean Direction_left = true;
