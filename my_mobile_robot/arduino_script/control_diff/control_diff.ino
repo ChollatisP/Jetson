@@ -14,8 +14,8 @@ ros::NodeHandle nh;
 // Other encoder output to Arduino to keep track of wheel direction
 // Tracks the direction of rotation.
 #define ENC_IN_LEFT_B 4
-#define ENC_IN_RIGHT_B 8
- 
+#define ENC_IN_RIGHT_B 11
+
 // True = Forward; False = Reverse
 boolean Direction_left = true;
 boolean Direction_right = true;
@@ -40,14 +40,14 @@ long currentMillis = 0;
 ////////////////// Motor Controller Variables and Constants ///////////////////
  
 // Motor A connections
-const int enA = 11;
-const int in1 = 7;
-const int in2 = 5;
+const int enA = 9;
+const int in1 = 5;
+const int in2 = 6;
   
 // Motor B connections
-const int enB = 6; 
-const int in3 = 9;
-const int in4 = 10;
+const int enB = 10; 
+const int in3 = 7;
+const int in4 = 8;
  
 // How much the PWM value can change each cycle
 const int PWM_INCREMENT = 1;
@@ -272,8 +272,8 @@ void set_pwm_values() {
   // If the required PWM is of opposite sign as the output PWM, we want to
   // stop the car before switching direction
   static bool stopped = false;
-  if ((pwmLeftReq * velLeftWheel < 0 && pwmLeftOut != 0) ||
-      (pwmRightReq * velRightWheel < 0 && pwmRightOut != 0)) {
+  if ((pwmLeftReq * velLeftWheel < 0 && pwmLeftOut != 0) || (pwmRightReq * velRightWheel < 0 && pwmRightOut != 0)) 
+  {
     pwmLeftReq = 0;
     pwmRightReq = 0;
   }
@@ -347,8 +347,8 @@ void set_pwm_values() {
   pwmRightOut = (pwmRightOut < 0) ? 0 : pwmRightOut;
  
   // Set the PWM value on the pins
-  //analogWrite(enA, pwmLeftOut); 
-  //analogWrite(enB, pwmRightOut); 
+  analogWrite(enA, pwmLeftOut); 
+  analogWrite(enB, pwmRightOut); 
 }
  
 // Set up ROS subscriber to the velocity command
@@ -367,8 +367,8 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(ENC_IN_RIGHT_A), right_wheel_tick, RISING);
    
   // Motor control pins are outputs
-  //pinMode(enA, OUTPUT);
-  //pinMode(enB, OUTPUT);
+  pinMode(enA, OUTPUT);
+  pinMode(enB, OUTPUT);
   pinMode(in1, OUTPUT);
   pinMode(in2, OUTPUT);
   pinMode(in3, OUTPUT);
@@ -381,8 +381,8 @@ void setup() {
   digitalWrite(in4, LOW);
   
   // Set the motor speed
-  //analogWrite(enA, 0); 
-  //analogWrite(enB, 0);
+  analogWrite(enA, 0); 
+  analogWrite(enB, 0);
  
   // ROS Setup
   nh.getHardware()->setBaud(115200);
