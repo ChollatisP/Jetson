@@ -65,7 +65,7 @@ args="0.0 0.0 0.2 -1.57 0.0 0.0 /base_link /laser_frame 40" />
 
 <!-- LASER scan matcher -->
 <node pkg="laser_scan_matcher" type="laser_scan_matcher_node" name="laser_scan_matcher_node" output="screen">
-<param name="max_iterations" value="10"/>
+<param name="max_iterations" value="20"/>
 <param name="fixed_frame" value="map"/>
 </node>
 

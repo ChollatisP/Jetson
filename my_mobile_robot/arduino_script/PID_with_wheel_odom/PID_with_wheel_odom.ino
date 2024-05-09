@@ -11,8 +11,7 @@ char str_msg_buffer[50];
 
 // Initialize string message
 std_msgs::String str_msg;
-
-// Define constants
+ine constants
 
 #define WHEEL_DISTANCE 0.195
 #define ENCODER_A_LEFT 2
