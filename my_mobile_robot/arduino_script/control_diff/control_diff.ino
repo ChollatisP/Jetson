@@ -40,14 +40,14 @@ long currentMillis = 0;
 ////////////////// Motor Controller Variables and Constants ///////////////////
  
 // Motor A connections
-const int enA = 9;
-const int in1 = 5;
-const int in2 = 6;
+const int enA = 11;
+const int in1 = 7;
+const int in2 = 5;
   
 // Motor B connections
-const int enB = 10; 
-const int in3 = 7;
-const int in4 = 8;
+const int enB = 6; 
+const int in3 = 9;
+const int in4 = 10;
  
 // How much the PWM value can change each cycle
 const int PWM_INCREMENT = 1;
