@@ -56,6 +56,33 @@
         </xacro:inertial_box>
     </link>
 
+    <!-- Jetson -->
+
+    <joint name="Jetson_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="Jetson" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="Jetson">
+        <visual>
+            <geometry>
+              <mesh filename="package://my_mobile_robot/STL/Jetson.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="-0.06 0.05 0.122" rpy="0 0 -1.57"/>
+            <material name="blue"/>
+        </visual>
+        <!--<collision>
+            <origin xyz="0.15 0 0.075" />
+            <geometry>
+                <box size="0.3 0.3 0.15" />
+            </geometry>
+        </collision> -->
+        <xacro:inertial_box mass="0.5" x="0.3" y="0.3" z="0.15">
+            <origin xyz="-0.11 0.05 -0.015" rpy="1.56 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
     <!-- LEFT WHEEL LINK -->
 
     <joint name="left_wheel" type="continuous">
@@ -71,7 +98,7 @@
               <mesh filename="package://my_mobile_robot/STL/wheels_step-1.STL" scale="0.001 0.001 0.001"/>
             </geometry>
             <origin xyz="-0.22 -0.045 -0.04" rpy="0 0 0"/>
-            <material name="white"/>
+            <material name="orange"/>
         </visual>
         <!--<collision>
             <geometry>
@@ -108,7 +135,7 @@
               <mesh filename="package://my_mobile_robot/STL/wheels_step-2.STL" scale="0.001 0.001 0.001"/>
             </geometry>
             <origin xyz="0 -0.045 -0.04" rpy="0 0 0"/>
-            <material name="white"/>
+            <material name="orange"/>
         </visual>
         <!--<collision>
             <geometry>
@@ -175,7 +202,7 @@
             <geometry>
               <mesh filename="package://my_mobile_robot/STL/FreeBall.STL" scale="0.001 0.001 0.001"/>
             </geometry>
-            <origin xyz="-0.11 0.06 -0.015" rpy="1.56 0 0"/>
+            <origin xyz="-0.125 0.15 -0.015" rpy="1.56 0 0"/>
             <material name="white"/>
         </visual>
         <!--<collision>
@@ -188,7 +215,6 @@
         </xacro:inertial_sphere>
     </link>
 
-
     <!-- Add a Sensor Link -->
     <link name="lidar_link">
         <visual>
@@ -196,7 +222,7 @@
             <geometry>
                 <cylinder radius="0.02" length="0.02" /> <!-- Example shape, adjust as needed -->
             </geometry>
-            <material name="blue" /> <!-- Example material, adjust as needed -->
+            <material name="black" /> <!-- Example material, adjust as needed -->
         </visual>
         <!--<collision>
             Collision properties of the lidar sensor
@@ -211,7 +237,7 @@
     <joint name="lidar_joint" type="fixed">
         <parent link="chassis"/>
         <child link="lidar_link"/>
-        <origin xyz="0 0 0.13" rpy="0 0 0"/>
+        <origin xyz="-0.015 -0.012 0.198" rpy="0 0 0"/>
     </joint>
 
     <gazebo reference="lidar_link">
