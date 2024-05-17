@@ -66,7 +66,7 @@ args="0 0 0 0 0 0 map odom 100"/ -->
 args="0 0 0 0 0 0 1 odom base_link 100" />
 
 <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser4"
-args="0.0 0.0 0.2 -1.57 0.0 0.0 /base_link /laser_frame 40" />
+args="0.0 0.0 0.2 0 0.0 0.0 /base_link /laser_frame 40" />
 
 <!-- AMCL -->
 <!-- Arguments -->
