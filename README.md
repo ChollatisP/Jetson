@@ -20,6 +20,10 @@ Create map you have to run
 ```
 roslaunch my_mobile_robot slam_tool_rviz_gazebo.launch
 ```
+```
+cd my_mobile_robot/script
+python3 pub_scan.py
+```
 After finish runnung for create map go to PANEL in RVIZ an click on Add new panel then type name of map at save map an serialize map
 ### How to use map
 go to .ros dir an your map is here then move every files that hav same name as your map to ~/worksp/--YOUR_WS--/src/Jetson/my_mobile_robot/maps
