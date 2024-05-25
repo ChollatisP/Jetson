@@ -1,4 +1,4 @@
-image: /home/jetson/mobilerobot_ws/src/Jetson/my_mobile_robot/maps/stadium.pgm
+image: /home/chollatis/worksp/project_ws/src/Jetson/my_mobile_robot/maps/stadium.pgm
 resolution: 0.050000
 origin: [-11.782124, -1.808038, 0.000000]
 negate: 0

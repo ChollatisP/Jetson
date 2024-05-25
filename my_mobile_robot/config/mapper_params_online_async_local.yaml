@@ -10,13 +10,13 @@ ceres_loss_function: None
 odom_frame: odom
 map_frame: map
 base_frame: base_link
-scan_topic: /scan
+scan_topic: /new_scan
 mode: localization
 
 # if you'd like to immediately start continuing a map at a given pose
 # or at the dock, but they are mutually exclusive, if pose is given
 # will use pose
-map_file_name: /home/jetson/mobilerobot_ws/src/Jetson/my_mobile_robot/maps/stadium
+map_file_name: /home/chollatis/worksp/project_ws/src/Jetson/my_mobile_robot/maps/testject
 map_start_pose: [0.0, 0.0, 0.0]
 #map_start_at_dock: true
 
